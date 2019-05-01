@@ -32,11 +32,14 @@ public:
 
     int owner;
 
+    bool castle;
+
     QColor color_;
 
 signals:
 
     void TileClicked(Tile * t, Qt::MouseButton b);
+    void TileShiftClicked(Tile * t, Qt::MouseButton b);
 
 protected:
 

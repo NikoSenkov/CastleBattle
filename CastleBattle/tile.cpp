@@ -22,6 +22,7 @@ Tile::Tile(QColor color, const int x, const int y, int w, int h)
     height_ = h;
 
     owner = 0;
+    castle = false;
 }
 
 QRectF Tile::boundingRect() const
@@ -50,6 +51,11 @@ void Tile::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
 void Tile::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     qDebug() << "cell clicked ";
+
+    if(event->modifiers() == Qt::ShiftModifier){
+        qDebug() << "cell shift clicked";
+        emit TileShiftClicked(this, Qt::LeftButton);
+    }
 
     emit TileClicked(this, event->button());
 
